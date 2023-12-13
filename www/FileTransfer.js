@@ -229,7 +229,7 @@ FileTransfer.prototype.download = function (source, target, successCallback, err
                 result.filesystemName || (result.filesystem === window.PERSISTENT ? 'persistent' : 'temporary')
             );
             entry.nativeURL = result.nativeURL;
-            successCallback(entry);
+            successCallback({ entry, headers: result.headers });
         }
     };
 
