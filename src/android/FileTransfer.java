@@ -36,6 +36,8 @@ import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.Inflater;
 
@@ -837,7 +839,7 @@ public class FileTransfer extends CordovaPlugin {
                         if (filePlugin != null) {
                             JSONObject fileEntry = filePlugin.getEntryForFile(file);
                             if (fileEntry != null) {
-                                result = new PluginResult(PluginResult.Status.OK, fileEntry);
+                                result = new PluginResult(PluginResult.Status.OK, getFileEntryWithHeaders(connection.getHeaderFields(), fileEntry));
                             } else {
                                 JSONObject error = createFileTransferError(CONNECTION_ERR, source, target, connection, null);
                                 LOG.e(LOG_TAG, "File plugin cannot represent download path");
@@ -913,5 +915,19 @@ public class FileTransfer extends CordovaPlugin {
                 }
             });
         }
+    }
+
+    private JSONObject getFileEntryWithHeaders(Map<String, List<String>> headers, JSONObject fileEntry) throws JSONException {
+        JSONObject json = new JSONObject();
+
+        for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
+            if (entry.getKey() == "null" || entry.getKey() == null) {
+                continue;
+            }
+
+            json.put(entry.getKey(), entry.getValue());
+        }
+
+        return fileEntry.put("headers", json);
     }
 }

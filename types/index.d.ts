@@ -40,7 +40,7 @@ interface FileTransfer {
      * @param source            URL of the server to download the file, as encoded by encodeURI().
      * @param target            Filesystem url representing the file on the device. For backwards compatibility,
      *                               this can also be the full path of the file on the device.
-     * @param successCallback   A callback that is passed a FileEntry object. (Function)
+     * @param successCallback   A callback that is passed a FileEntry object and response headers. (Function)
      * @param errorCallback     A callback that executes if an error occurs when retrieving the fileEntry.
      *                               Invoked with a FileTransferError object.
      * @param options           Optional parameters.
@@ -51,7 +51,7 @@ interface FileTransfer {
     download(
         source: string,
         target: string,
-        successCallback: (fileEntry: FileEntry) => void,
+        successCallback: (params: { entry: FileEntry; header: Record<string, string>; }) => void,
         errorCallback: (error: FileTransferError) => void,
         trustAllHosts?: boolean,
         options?: FileDownloadOptions): void;
