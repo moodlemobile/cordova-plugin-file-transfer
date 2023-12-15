@@ -51,7 +51,7 @@ interface FileTransfer {
     download(
         source: string,
         target: string,
-        successCallback: (params: { entry: FileEntry; header: Record<string, string>; }) => void,
+        successCallback: (params: { entry: FileEntry; headers: Record<string, string> | undefined; }) => void,
         errorCallback: (error: FileTransferError) => void,
         trustAllHosts?: boolean,
         options?: FileDownloadOptions): void;
