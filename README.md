@@ -4,7 +4,11 @@ This is a fork of `cordova-plugin-file-transfer` by [Moodle HQ](https://moodle.c
 
 ## Modifications from the original
 
-We created this fork for [our mobile application](https://github.com/moodlehq/moodleapp) because there are some commits in the development branch that haven't been released. So this package doesn't have any extra modifications (other than name and version).
+We created this fork because we needed to include the following modifications in [our mobile application](https://github.com/moodlehq/moodleapp):
+
+| PR | Description |
+| -- | ----------- |
+| - | Return headers along with the file entry when downloading a file |
 
 You can see all the changes here: [1.7.1...moodlemobile:v1.7.1-moodle.7](https://github.com/apache/cordova-plugin-file-transfer/compare/1.7.1...moodlemobile:v1.7.1-moodle.7)
 
