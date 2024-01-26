@@ -38,6 +38,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.Inflater;
 
@@ -925,9 +927,15 @@ public class FileTransfer extends CordovaPlugin {
                 continue;
             }
 
-            json.put(entry.getKey(), entry.getValue());
+            json.put(entry.getKey(), trimBrackets(entry.getValue().toString()));
         }
 
         return fileEntry.put("headers", json);
+    }
+
+    private String trimBrackets(String header) {
+        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = pattern.matcher(header);
+        return matcher.find() ? matcher.group(1) : header;
     }
 }
