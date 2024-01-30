@@ -10,12 +10,12 @@ We created this fork because we needed to include the following modifications in
 | -- | ----------- |
 | - | Return headers along with the file entry when downloading a file |
 
-You can see all the changes here: [1.7.1...moodlemobile:v1.7.1-moodle.8](https://github.com/apache/cordova-plugin-file-transfer/compare/1.7.1...moodlemobile:v1.7.1-moodle.8)
+You can see all the changes here: [2.0.0...moodlemobile:v2.0.0-moodle.1](https://github.com/apache/cordova-plugin-file-transfer/compare/2.0.0...moodlemobile:v2.0.0-moodle.1)
 
 ## Installation
 
 You can install this package using the [original installation instructions](https://github.com/apache/cordova-plugin-file-transfer#installation), but installing this package instead:
 
 ```sh
-cordova plugin add @moodlehq/cordova-plugin-file-transfer@1.7.1-moodle.8
+cordova plugin add @moodlehq/cordova-plugin-file-transfer@2.0.0-moodle.1
 ```
