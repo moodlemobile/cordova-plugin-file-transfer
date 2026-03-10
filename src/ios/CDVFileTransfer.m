@@ -614,7 +614,10 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
             uploadResult = [NSMutableDictionary dictionaryWithCapacity:3];
             if (uploadResponse != nil) {
                 [uploadResult setObject:uploadResponse forKey:@"response"];
-                [uploadResult setObject:self.responseHeaders forKey:@"headers"];
+                
+                if (self.responseHeaders) {
+                    [uploadResult setObject:self.responseHeaders forKey:@"headers"];
+                }
             }
             [uploadResult setObject:[NSNumber numberWithLongLong:self.bytesTransfered] forKey:@"bytesSent"];
             [uploadResult setObject:[NSNumber numberWithInt:self.responseCode] forKey:@"responseCode"];
@@ -629,7 +632,10 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
             self.targetFileHandle = nil;
             DLog(@"File Transfer Download success");
             NSMutableDictionary* resultData = [[self.filePlugin makeEntryForURL:self.targetURL] mutableCopy];
-            [resultData setObject:self.responseHeaders forKey:@"headers"];
+            
+            if (self.responseHeaders) {
+                [resultData setObject:self.responseHeaders forKey:@"headers"];
+            }
 
             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:resultData];
         } else {
