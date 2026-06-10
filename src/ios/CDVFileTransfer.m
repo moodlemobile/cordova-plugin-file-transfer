@@ -17,7 +17,7 @@
  under the License.
  */
 
-#import <Cordova/CDV.h>
+#import <Cordova/Cordova.h>
 #import "CDVFileTransfer.h"
 #import "CDVLocalFilesystem.h"
 
@@ -616,7 +616,7 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
             uploadResult = [NSMutableDictionary dictionaryWithCapacity:3];
             if (uploadResponse != nil) {
                 [uploadResult setObject:uploadResponse forKey:@"response"];
-                
+
                 if (self.responseHeaders) {
                     [uploadResult setObject:self.responseHeaders forKey:@"headers"];
                 }
@@ -634,7 +634,7 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
             self.targetFileHandle = nil;
             DLog(@"File Transfer Download success");
             NSMutableDictionary* resultData = [[self.filePlugin makeEntryForURL:self.targetURL] mutableCopy];
-            
+
             if (self.responseHeaders) {
                 [resultData setObject:self.responseHeaders forKey:@"headers"];
             }
