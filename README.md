@@ -9,13 +9,16 @@ We created this fork because we needed to include the following modifications in
 | PR | Description |
 | -- | ----------- |
 | - | Return headers along with the file entry when downloading a file |
+| [#385](https://github.com/apache/cordova-plugin-file-transfer/pull/385) | Cast to CDVFile |
 
-You can see all the changes here: [2.0.0...moodlemobile:v2.0.0-moodle.3](https://github.com/apache/cordova-plugin-file-transfer/compare/2.0.0...moodlemobile:v2.0.0-moodle.3)
+The cast to CDVFile is part of the official repository, but it hasn't been released at the time of this writing so it was cherry-picked.
+
+You can see all the changes here: [2.0.0...moodlemobile:v2.0.0-moodle.4](https://github.com/apache/cordova-plugin-file-transfer/compare/2.0.0...moodlemobile:v2.0.0-moodle.4)
 
 ## Installation
 
 You can install this package using the [original installation instructions](https://github.com/apache/cordova-plugin-file-transfer#installation), but installing this package instead:
 
 ```sh
-cordova plugin add @moodlehq/cordova-plugin-file-transfer@2.0.0-moodle.3
+cordova plugin add @moodlehq/cordova-plugin-file-transfer@2.0.0-moodle.4
 ```
